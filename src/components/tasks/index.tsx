@@ -7,7 +7,7 @@ type Props = {
 };
 
 const Tasks: React.FC<Props> = ({ tasks }) => {
-  return <div className="flex flex-col justify-center items-center">
+  return <div className="flex flex-col justify-center items-center pt-12">
     {tasks.map((task: z.infer<typeof Task>) => <TaskComponent key={task.id} task={task} />)}
   </div>
 };

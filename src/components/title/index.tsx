@@ -8,7 +8,7 @@ type Props = {
 };
 
 const Title: React.FC<Props> = ({ text }) => {
-  return <div className='w-full text-center justify-center py-4'>
+  return <div className='w-[90%] text-center justify-center py-4 bg-[#FAFAFA] fixed top-0'>
     <p className='text-3xl'>{text}</p>
   </div>
 };
