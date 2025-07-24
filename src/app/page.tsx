@@ -1,9 +1,13 @@
+"use client"
+
 import AddTaskButton from "@/components/addTaskButton";
-import Header from "@/components/header"
 import Tasks from "@/components/tasks";
 import Title from "@/components/title";
+import useFormStore from "@/stores";
 
 export default function Home() {
+  const state = useFormStore((state) => state.currentState)
+  const updateState = useFormStore((state) => state.updateState)
   return (
     <div className="bg-[#FAFAFA] w-full h-[100vh] overflow-auto">
       <div className="flex flex-col items-center justify-center p-5">
@@ -46,7 +50,7 @@ export default function Home() {
             status: "done"
           }
         ]} />
-        <AddTaskButton/>
+        <AddTaskButton />
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import { z } from "zod"
 
 export const strSchema = z.string();
+export const funcSchema = z.function();
 export const Task = z.object(
   {
     id: z.uuidv4(),
@@ -9,3 +10,5 @@ export const Task = z.object(
     status: z.enum(["pending", "done"]),
   }
 );
+
+export const PageState = z.enum(["list","create","edit"]);
