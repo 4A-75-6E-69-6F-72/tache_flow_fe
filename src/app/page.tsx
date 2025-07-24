@@ -1,3 +1,4 @@
+import AddTaskButton from "@/components/addTaskButton";
 import Header from "@/components/header"
 import Tasks from "@/components/tasks";
 import Title from "@/components/title";
@@ -5,7 +6,7 @@ import Title from "@/components/title";
 export default function Home() {
   return (
     <div className="bg-[#FAFAFA] w-full h-[100vh]">
-      <div className="items-center justify-center p-5">
+      <div className="flex flex-col items-center justify-center p-5">
         <Header text="Logo" />
         <Title text="Liste des tâches" />
         <Tasks tasks={[
@@ -22,7 +23,7 @@ export default function Home() {
             status: "done"
           }
         ]} />
-        {/* <Footer/> */}
+        <AddTaskButton/>
       </div>
     </div>
   );
