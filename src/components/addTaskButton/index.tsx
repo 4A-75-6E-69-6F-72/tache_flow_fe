@@ -4,6 +4,7 @@ import { z } from "zod";
 const AddTaskButton = () => {
   const state = useFormStore((state) => state.currentState)
   const updateState = useFormStore((state) => state.updateState)
+  const updateCurrentTask = useFormStore((state) => state.updateCurrentTask)
 
   const currentStateButtonText = () : string => {
     switch (state) {
@@ -24,6 +25,7 @@ const AddTaskButton = () => {
         case "create":
         case "edit":
           updateState("list")
+          updateCurrentTask(undefined)
           break;
       }
     };
