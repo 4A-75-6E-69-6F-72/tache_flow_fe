@@ -17,8 +17,8 @@ const TaskComponent: React.FC<Props> = ({ task }) => {
     updateState("edit")
   };
   return task.status == "pending" ?
-    <div className="py-3 w-full flex justify-center cursor-pointer" onClick={()=>{handleClick()}}>
-      <div className={"max-w-130 w-full flex flex-row items-center border-2 border-solid border-[#DDDDDD] p-5 rounded-xl gap-x-3 bg-[#FFFFFF] cursor-pointer hover:border-[#BBBBBB] transition-colors duration-200"}>
+    <div className="py-3 w-full flex justify-center">
+      <div onClick={()=>{handleClick()}} className={"max-w-130 w-full flex flex-row items-center border-2 border-solid border-[#DDDDDD] p-5 rounded-xl gap-x-3 bg-[#FFFFFF] cursor-pointer hover:border-[#BBBBBB] transition-colors duration-200"}>
         <div className="min-w-10 min-h-10 w-10 h-10 rounded-full border-2 border-solid border-[#DDDDDD] flex justify-center items-center">
           <div className="w-5 h-1 bg-[#DDDDDD]"></div>
         </div>

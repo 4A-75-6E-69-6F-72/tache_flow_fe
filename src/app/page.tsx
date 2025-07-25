@@ -1,6 +1,6 @@
 "use client"
 
-import AddTaskButton from "@/components/addTaskButton";
+import AddTaskButton from "@/components/bottomButtons";
 import TaskForm from "@/components/taskForm";
 import Tasks from "@/components/tasks";
 import Title from "@/components/title";
