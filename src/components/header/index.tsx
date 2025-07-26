@@ -1,4 +1,4 @@
-import { strSchema } from '@/types';
+import { strSchema } from '@/types/types';
 import 'react'
 import { z } from 'zod';
 

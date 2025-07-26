@@ -1,12 +1,12 @@
 "use client"
 
 import useFormStore from "@/stores";
-import { Task } from "@/types"
+import { Task, TaskType } from "@/types/types"
 import { useState } from "react";
 import { z } from "zod"
 
 type Props = {
-  task: z.infer<typeof Task>;
+  task: TaskType;
 };
 
 const TaskComponent: React.FC<Props> = ({ task }) => {

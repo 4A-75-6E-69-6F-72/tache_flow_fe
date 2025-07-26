@@ -1,10 +1,11 @@
 "use client"
 
 import { useForm, SubmitHandler } from "react-hook-form"
-import { TaskStatus } from "@/types"
+import { TaskStatus, TaskType } from "@/types/types"
 import { z } from "zod"
 import useFormStore from "@/stores"
 import { useRef, useState } from "react"
+import taskQuery from "@/queries/taskQuery"
 
 type Inputs = {
   title: string
@@ -16,23 +17,37 @@ export default function TaskForm() {
   const {
     register,
     handleSubmit,
-    formState: { isSubmitted, isSubmitSuccessful, isSubmitting, errors },
+    formState: { errors },
   } = useForm<Inputs>()
   const updateState = useFormStore((state) => state.updateState)
   const updateCurrentTask = useFormStore((state) => state.updateCurrentTask)
+  const createTask = taskQuery.createTask()
+  const updateTask = taskQuery.updateTask()
   const formRef = useRef<HTMLFormElement>(null);
   const task = useFormStore((state) => state.currentTask)
+  const state = useFormStore((state) => state.currentState)
   const setValidationFunction = useFormStore((state) => state.updateCurrentFunction)
-  const mapStatus = (value: z.infer<typeof TaskStatus> | "") => {
-    const map = {
-      "": "",
-      "pending": "En cours",
-      "done": "Terminé"
-    }
-    return map[value]
-  }
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
+    if (state == "create") {
+      const newTask: TaskType = {
+        id: '00000000-0000-0000-0000-000000000000',
+        status: data.status,
+        title: data.title,
+        description: data.description
+      }
+      createTask.mutate({ task: newTask })
+    }
+    else {
+      const updatedTaskId = task?.id ?? '00000000-0000-0000-0000-000000000000'
+      const updatedTask: TaskType = {
+        id: updatedTaskId,
+        status: data.status,
+        title: data.title,
+        description: data.description
+      }
+      updateTask.mutate({ task: updatedTask, id: updatedTaskId })
+    }
     console.log(data)
     updateState("list")
     updateCurrentTask(undefined)
@@ -62,11 +77,11 @@ export default function TaskForm() {
         id="status"
         className="py-3 px-4 max-w-130 w-full border-solid border-2 border-[#DDDDDD] bg-white rounded-xl"
         {...register("status", { required: true })}
-        defaultValue={mapStatus(task?.status ?? "")}
+        defaultValue={task?.status ?? ""}
       >
         <option value="">-- Sélectionner --</option>
-        <option value="En cours">En cours</option>
-        <option value="Terminé">Terminé</option>
+        <option value="pending">En cours</option>
+        <option value="done">Terminé</option>
       </select>
 
       {errors.status && (
