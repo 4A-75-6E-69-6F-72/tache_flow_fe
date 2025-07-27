@@ -7,16 +7,17 @@ import Tasks from "@/components/tasks";
 import Title from "@/components/title";
 import taskQuery from "@/queries/taskQuery";
 import useFormStore from "@/stores";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 export default function TasksPage() {
   const state = useFormStore((state) => state.currentState)
-  const { isPending, error, data } = taskQuery.getTasks()
+  const { isPending, error, data, refetch } = taskQuery.getTasks()
 
-  useEffect(()=>{
-    if(state == "list"){
+  useEffect(() => {
+    if (state == "list") {
+      refetch()
     }
-  },[state])
+  }, [state])
 
   const title = () => {
     switch (state) {
@@ -36,7 +37,7 @@ export default function TasksPage() {
         return <TaskForm />
       case "list":
         if (isPending) return <FullPageText text="Chargement..." />
-        if (data && data.length > 0) return <Tasks tasks={data} />
+        if (data && data.length > 0) return <Tasks tasks={data} refresh={() => { refetch() }} />
         if (data && data.length == 0) return <FullPageText text="Aucune tâche" />
         if (error) return <FullPageText text={error.message} />
     }
@@ -46,7 +47,7 @@ export default function TasksPage() {
     <div className="bg-[#FAFAFA] flex w-full h-[100vh] overflow-auto">
       <div className="flex flex-col flex-grow items-center justify-start p-5">
         <Title text={title()} />
-        <div className="mt-16 mb-16 flex flex-grow w-full items-start justify-center">
+        <div className="mt-22 mb-16 flex flex-grow w-full items-start justify-center">
           {mainContent()}
         </div>
         <AddTaskButton />

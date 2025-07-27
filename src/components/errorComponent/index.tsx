@@ -7,14 +7,14 @@ import FullPageText from "../fullPageText";
 
 
 type Props = {
-    error: Error;
-    reset?: () => void | undefined;
+  error: Error;
+  reset?: () => void | undefined;
 };
 
 const ErrorComponent: React.FC<Props> = ({ error, reset }) => {
-    return (
-        <FullPageText text="Une erreur s'est produite. Veuillez contacter votre dev ;)" />
-    );
+  return (
+    <FullPageText text="Une erreur s'est produite. Veuillez contacter votre dev ;)" />
+  );
 }
 
 export default ErrorComponent

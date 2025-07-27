@@ -28,8 +28,6 @@ export const useTaskMutation = ({ method }: { method: z.infer<typeof RequestType
       }).then((res) =>
         res.json(),
       ),
-    onSuccess: () => {
-      console.log("success")
-    },
+    onSuccess: () => { },
   })
 };

@@ -1,6 +1,5 @@
 import taskQuery from "@/queries/taskQuery";
-import useFormStore, { StoreState } from "@/stores";
-import { z } from "zod";
+import useFormStore from "@/stores";
 
 const AddTaskButton = () => {
   const state = useFormStore((state) => state.currentState)
@@ -58,7 +57,7 @@ const AddTaskButton = () => {
     }
   };
   return <div className="absolute bottom-[2rem] gap-x-4 gap-y-4 grid grid-cols-2 justify-items-center">
-    <div className={`flex justify-center ${state == "list"?"col-span-2":""}`}>
+    <div className={`flex justify-center ${state == "list" ? "col-span-2" : ""}`}>
       <button className="w-40 h-12 rounded-full bg-[#284A9A] text-[#FFFFFF] cursor-pointer" onClick={performCurrentStateAction}>
         {currentStateButtonText()}
       </button>

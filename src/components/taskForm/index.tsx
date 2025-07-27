@@ -48,7 +48,6 @@ export default function TaskForm() {
       }
       updateTask.mutate({ task: updatedTask, id: updatedTaskId })
     }
-    console.log(data)
     updateState("list")
     updateCurrentTask(undefined)
   }

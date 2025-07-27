@@ -3,7 +3,7 @@ import { ResponseType, TaskType, uuidv4Schema } from "@/types/types"
 import { UseMutationResult, UseQueryResult } from "@tanstack/react-query"
 import { z } from "zod"
 
-const getTasks = ():UseQueryResult<TaskType[]> => {
+const getTasks = (): UseQueryResult<TaskType[]> => {
   return useTaskData()
 }
 

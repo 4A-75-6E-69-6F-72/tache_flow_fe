@@ -21,4 +21,4 @@ export type ResponseType = {
   task?: TaskType
 }
 
-export const PageState = z.enum(["list","create","edit"]);
+export const PageState = z.enum(["list", "create", "edit"]);
