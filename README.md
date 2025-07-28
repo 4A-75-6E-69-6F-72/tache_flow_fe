@@ -18,7 +18,7 @@
 - Styling: Tailwind CSS
 - State: Zustand + TanStack Query
 - Forms: React Hook Form + Zod validation
-- Routing: Next.js file-system routing (Not really used)
+- Routing: Next.js file-system routing (Only used when loading the main page)
 
 ## 📂 PROJECT STRUCTURE
 src/
@@ -33,10 +33,11 @@ src/
 Next.js, React, TypeScript
 TailwindCSS, Zustand
 TanStack Query, React Hook Form
-Zod, Axios
+Zod
 
 ## ⚠️ IMPORTANT NOTES
 Ensure backend is running first
+This code was package on windows 10 (OS build 19045.6093). It was not tested on windows 11. Docker file in progress...
 
 ## DEV NOTES
 The app was intentionally done one page to portray some skills in state management ;).
